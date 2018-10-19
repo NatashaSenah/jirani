@@ -1,1 +1,8 @@
-h1> Welcome to Neighbourhood</h1>
+{%extends 'all-jirani/base.html'%}
+{% load bootstrap3 %}
+<h1 class="text-center"> Welcome to Neighbourhood</h1>
+{% block content %}
+{{block.super}}
+{% endblock %}
+
+
