@@ -50,49 +50,83 @@ body {
   color: white;
   transform: rotateY(180deg);
 }
+#pic {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+}
+
+#pic img {
+    width: 100%;
+    height: auto;
+}
+
+#pic .btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#pic .btn:hover {
+    background-color: black;
+}
 </style>
 </head>
 <body>
 <h1>BUSINESS</h1>
-<div class="row"> 
-<div class="col-md-4"> 
+{% for neiba in neighbours %}
+
+{{neiba.neighbourhood_name}}
+{%if neiba.neighbourhood_image%}
+<img src="{{neiba.neighbourhood_image.url}}" alt="" style="width:350px;height:300px;">
+{% endif %}
+{% endfor %}
+<div class="row">  
+<div class="col-md-4" id ="pic"> 
 <div class="flip-card">
   <div class="flip-card-inner">
     <div class="flip-card-front">
-        <img src="../static/images/paris.jpg" alt="" style="width:370px;height:300px;">
+        <img src="../static/images/paris.jpg" alt="" style="width:350px;height:300px;">
     </div>
-    <div class="flip-card-back">
-      <h1>John Doe</h1> 
-      <p>Architect & Engineer</p> 
-      <p>We love that guy</p>
+    <div class="flip-card-back"> 
+      <p>RESTRAURANT</p> 
+      <button class="btn">Join</button>
     </div>
   </div>
 </div>
 </div>
-<div class="col-md-4"> 
+<div class="col-md-4" id="pic"> 
 <div class="flip-card">
     <div class="flip-card-inner">
       <div class="flip-card-front">
-          <img src="../static/images/saloon.jpg" alt="" style="width:370px;height:300px;">
+          <img src="../static/images/saloon.jpg" alt="" style="width:350px;height:300px;">
       </div>
       <div class="flip-card-back">
-        <h1>John Doe</h1> 
-        <p>Architect & Engineer</p> 
-        <p>We love that guy</p>
+        <h1>SALON</h1>
+          <button class="btn">Join</button>
       </div>
     </div>
   </div>
 </div>
-<div class="col-md-4">
+<div class="col-md-4" id="pic">
   <div class="flip-card">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-            <img src="../static/images/Super.jpg" alt="" style="width:370px;height:300px;">
+            <img src="../static/images/Super.jpg" alt="" style="width:350px;height:300px;">
         </div>
         <div class="flip-card-back">
-          <h1>John Doe</h1> 
-          <p>Architect & Engineer</p> 
-          <p>We love that guy</p>
+          <h1>SUPERMARKET</h1> 
+          <button class="btn">Join</button>
         </div>
       </div>
     </div>
@@ -100,44 +134,41 @@ body {
 </div>
 <br>
 <div class="row"> 
-  <div class="col-md-4"> 
+  <div class="col-md-4" id="pic"> 
     <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-              <img src="../static/images/TM.jpg" alt="" style="width:370px;height:300px;">
+              <img src="../static/images/TM.jpg" alt="" style="width:350px;height:300px;">
           </div>
           <div class="flip-card-back">
-            <h1>John Doe</h1> 
-            <p>Architect & Engineer</p> 
-            <p>We love that guy</p>
+            <h1>TOURISM</h1>
+              <button class="btn">Join</button>
           </div>
         </div>
       </div>
   </div>
-  <div class="col-md-4"> 
+  <div class="col-md-4" id="pic"> 
       <div class="flip-card">
           <div class="flip-card-inner">
             <div class="flip-card-front">
-                <img src="../static/images/uber.jpg" alt="" style="width:370px;height:300px;">
+                <img src="../static/images/uber.jpg" alt="" style="width:350px;height:300px;">
             </div>
             <div class="flip-card-back">
-              <h1>John Doe</h1> 
-              <p>Architect & Engineer</p> 
-              <p>We love that guy</p>
+              <h1>UBER</h1> 
+              <button class="btn">Join</button>
             </div>
           </div>
         </div>
   </div>
-  <div class="col-md-4"> 
+  <div class="col-md-4" id="pic"> 
       <div class="flip-card">
           <div class="flip-card-inner">
             <div class="flip-card-front">
-                <img src="../static/images/Hirano.jpg" alt="" style="width:370px;height:300px;">
+                <img src="../static/images/Hirano.jpg" alt="" style="width:350px;height:300px;">
             </div>
             <div class="flip-card-back">
-              <h1>John Doe</h1> 
-              <p>Architect & Engineer</p> 
-              <p>We love that guy</p>
+              <h1>CAKE SHOP</h1> 
+              <button class="btn">Join</button>
             </div>
           </div>
         </div>
@@ -147,44 +178,41 @@ body {
   <h1>NEIGHBORHOOD</h1>
   
   <div class="row"> 
-      <div class="col-md-4"> 
+      <div class="col-md-4" id="pic"> 
       <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-              <img src="../static/images/7.jpg" alt="" style="width:370px;height:300px;">
+              <img src="../static/images/7.jpg" alt="" style="width:350px;height:300px;">
           </div>
           <div class="flip-card-back">
-            <h1>John Doe</h1> 
-            <p>Architect & Engineer</p> 
-            <p>We love that guy</p>
+            <h1>KILIMANI</h1> 
+            <button class="btn">Join</button>
           </div>
         </div>
       </div>
       </div>
-      <div class="col-md-4"> 
+      <div class="col-md-4" id="pic"> 
       <div class="flip-card">
           <div class="flip-card-inner">
             <div class="flip-card-front">
-                <img src="../static/images/020.jpg" alt="" style="width:370px;height:300px;">
+                <img src="../static/images/020.jpg" alt="" style="width:350px;height:300px;">
             </div>
             <div class="flip-card-back">
-              <h1>John Doe</h1> 
-              <p>Architect & Engineer</p> 
-              <p>We love that guy</p>
+              <h1>SEDNEY</h1> 
+              <button class="btn">Join</button>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4" id="pic">
         <div class="flip-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
-                  <img src="../static/images/house.jpeg" alt="" style="width:370px;height:300px;">
+                  <img src="../static/images/house.jpeg" alt="" style="width:350px;height:300px;">
               </div>
               <div class="flip-card-back">
-                <h1>John Doe</h1> 
-                <p>Architect & Engineer</p> 
-                <p>We love that guy</p>
+                <h1>NYALI</h1> 
+                <button class="btn">Join</button>
               </div>
             </div>
           </div>
@@ -192,44 +220,41 @@ body {
       </div>
       <br>
       <div class="row"> 
-        <div class="col-md-4"> 
+        <div class="col-md-4" id="pic"> 
           <div class="flip-card">
               <div class="flip-card-inner">
                 <div class="flip-card-front">
-                    <img src="../static/images/images.jpeg" alt="" style="width:370px;height:300px;">
+                    <img src="../static/images/images.jpeg" alt="" style="width:350px;height:300px;">
                 </div>
                 <div class="flip-card-back">
-                  <h1>John Doe</h1> 
-                  <p>Architect & Engineer</p> 
-                  <p>We love that guy</p>
+                  <h1>EASTLEIGH</h1> 
+                  <button class="btn">Join</button>
                 </div>
               </div>
             </div>
         </div>
-        <div class="col-md-4"> 
+        <div class="col-md-4" id="pic"> 
             <div class="flip-card">
                 <div class="flip-card-inner">
                   <div class="flip-card-front">
-                      <img src="../static/images/neigb.jpg" alt="" style="width:370px;height:300px;">
+                      <img src="../static/images/neigb.jpg" alt="" style="width:350px;height:300px;">
                   </div>
                   <div class="flip-card-back">
-                    <h1>John Doe</h1> 
-                    <p>Architect & Engineer</p> 
-                    <p>We love that guy</p>
+                    <h1>KILELESHWA</h1> 
+                    <button class="btn">Join</button>
                   </div>
                 </div>
               </div>
         </div>
-        <div class="col-md-4"> 
+        <div class="col-md-4" id="pic"> 
             <div class="flip-card">
                 <div class="flip-card-inner">
                   <div class="flip-card-front">
-                      <img src="../static/images/us.jpg" alt="" style="width:370px;height:300px;">
+                      <img src="../static/images/us.jpg" alt="" style="width:350px;height:300px;">
                   </div>
                   <div class="flip-card-back">
-                    <h1>John Doe</h1> 
-                    <p>Architect & Engineer</p> 
-                    <p>We love that guy</p>
+                    <h1>WOODELY</h1> 
+                    <button class="btn">Join</button>
                   </div>
                 </div>
               </div>

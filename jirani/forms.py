@@ -5,15 +5,15 @@ from .models import Neighbourhood,User,Business
 class NewNeighbourhoodForm(forms.ModelForm):
     class Meta:
         model = Neighbourhood
-        exclude = ['editor', 'pub_date']
+        exclude = []
 class UserForm(forms.ModelForm):
     class Meta:
         model = User
-        exclude = ['editor']
+        exclude = []
 class BusinessForm(forms.ModelForm):
     class Meta:
         model = Business
-        exclude = ['user']
+        exclude = []
 class SignupForm(UserCreationForm):
  email = forms.EmailField()
  class Meta:

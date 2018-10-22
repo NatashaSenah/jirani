@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from tinymce.models import HTMLField
 # Create your models here.
 class Neighbourhood(models.Model):
+    neighbourhood_image = models.ImageField(upload_to = 'image/',null = True)
     neighbourhood_name = models.TextField()
     neighbourhood_location = models.TextField()
     neighbourhood_occupant = models.TextField()
@@ -18,11 +19,13 @@ class Neighbourhood(models.Model):
         neighbourhood = cls.objects.filter(title__icontains=search_term)
         return neighbourhood
 class Profile(models.Model):
-    user_name = models.TextField()
+    profile_image = models.ImageField(upload_to = 'image/',null = True)
+    profile_name = models.TextField()
     neighbourhood = models.ForeignKey(Neighbourhood)
     email = models.EmailField() 
     phone_number = models.CharField(max_length = 10,blank =False)
 class Business(models.Model):
+    business_image = models.ImageField(upload_to = 'image/',null = True)
     business_name = models.TextField()
     user = models.ForeignKey(User)
     neighbourhood = models.ForeignKey(Neighbourhood)

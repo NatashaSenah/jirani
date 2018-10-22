@@ -1,15 +1,18 @@
-from .forms import NewNeighbourhoodForm
+from .forms import NewNeighbourhoodForm,BusinessForm
 from django.shortcuts import render,redirect
 from django.http  import HttpResponse
 from django.contrib.auth.decorators import login_required
-
+from .models import Neighbourhood
 # Create your views here.
 @login_required(login_url='/accounts/login/')
 def welcome(request):
-    return render(request, 'jirani.html')
+    neighbours = Neighbourhood.objects.all()
+    return render(request, 'jirani.html',locals())
 @login_required(login_url='/accounts/login/')
 def jirani(request):
-    return render(request,'jirani.html')
+    neighbours = Neighbourhood.objects.all()
+    
+    return render(request,'jirani.html',locals())
 def search_results(request):
 
     if 'neighbourhood' in request.GET and request.GET["neighbourhood"]:
@@ -28,11 +31,29 @@ def new_neighbourhood(request):
     if request.method == 'POST':
         form = NewNeighbourhoodForm(request.POST, request.FILES)
         if form.is_valid():
+            # print('edrftgyhunjmik,lp.;')
+
             neighbourhood = form.save(commit=False)
-            neighbourhood.editor = current_user
             neighbourhood.save()
         return redirect('home')
+
 
     else:
         form = NewNeighbourhoodForm()
     return render(request, 'new_neighbourhood.html', {"form": form})
+@login_required(login_url='/accounts/login/')
+def business(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = BusinessForm(request.POST, request.FILES)
+        if form.is_valid():
+            # print('edrftgyhunjmik,lp.;')
+
+            business = form.save(commit=False)
+            business.save()
+        return redirect('home')
+
+
+    else:
+        form = BusinessForm()
+    return render(request, 'business.html', {"form": form})
