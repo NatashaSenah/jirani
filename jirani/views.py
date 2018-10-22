@@ -1,8 +1,9 @@
-from .forms import NewNeighbourhoodForm,BusinessForm
+from .forms import NewNeighbourhoodForm,BusinessForm,ProfileForm
 from django.shortcuts import render,redirect
 from django.http  import HttpResponse
 from django.contrib.auth.decorators import login_required
-from .models import Neighbourhood
+from .models import Neighbourhood,Business,Profile
+from django.contrib.auth.models import User
 # Create your views here.
 @login_required(login_url='/accounts/login/')
 def welcome(request):
@@ -11,7 +12,7 @@ def welcome(request):
 @login_required(login_url='/accounts/login/')
 def jirani(request):
     neighbours = Neighbourhood.objects.all()
-    
+    business = Business.objects.all()
     return render(request,'jirani.html',locals())
 def search_results(request):
 
@@ -57,3 +58,27 @@ def business(request):
     else:
         form = BusinessForm()
     return render(request, 'business.html', {"form": form})
+def profile(request, username):
+    profile = User.objects.get(username=username)
+ 
+    try:
+        profile_details = Profile.get_by_id(profile.id)
+    except:
+        profile_details = Profile.objects.filter(id=profile.id)
+    # images = Image.get_profile_images(profile.id)
+    title = f'@{profile.username} '
+
+    return render(request, 'profile/profile.html', locals())
+def edit_profile(request):
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            edit = form.save(commit=False)
+            edit.user = request.user
+            edit.save()
+            username = request.user.username
+        return redirect('profile', username=username)
+    else:
+        form = ProfileForm(instance = request.user)
+
+    return render(request, 'profile/edit_profile.html', {'form': form})

@@ -84,13 +84,7 @@ body {
 </head>
 <body>
 <h1>BUSINESS</h1>
-{% for neiba in neighbours %}
 
-{{neiba.neighbourhood_name}}
-{%if neiba.neighbourhood_image%}
-<img src="{{neiba.neighbourhood_image.url}}" alt="" style="width:350px;height:300px;">
-{% endif %}
-{% endfor %}
 <div class="row">  
 <div class="col-md-4" id ="pic"> 
 <div class="flip-card">
@@ -260,7 +254,20 @@ body {
               </div>
         </div>
       </div>
-  
+      {% for neiba in neighbours %}
+
+      
+      {%if neiba.neighbourhood_image%}
+      <img src="{{neiba.neighbourhood_image.url}}" alt="" style="width:350px;height:300px;">
+      {% endif %}
+      {% endfor %}
+      {% for neiba in business %}
+      
+    
+      {%if neiba.business_image%}
+      <img src="{{neiba.business_image.url}}" alt="" style="width:350px;height:300px;">
+      {% endif %}
+      {% endfor %}
 
 
 </body>

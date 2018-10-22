@@ -1,15 +1,17 @@
 from .models import Neighbourhood
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import Neighbourhood,User,Business
+from .models import Neighbourhood,Profile,Business
+from django.contrib.auth.models import User
 class NewNeighbourhoodForm(forms.ModelForm):
     class Meta:
         model = Neighbourhood
         exclude = []
-class UserForm(forms.ModelForm):
+class ProfileForm(forms.ModelForm):
     class Meta:
-        model = User
+        model = Profile
         exclude = []
+
 class BusinessForm(forms.ModelForm):
     class Meta:
         model = Business
