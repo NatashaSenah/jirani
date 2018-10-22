@@ -88,7 +88,7 @@ li a:hover {
           <a href="#">Link 3</a>
         </div>
       </div> 
-</ul>
+
         <!-- Adding a search form  -->
         <div class="col-sm-4 col-md-4 navbar-right">
             <form class="navbar-form" role="search" action="{% url 'search_results' %}">
@@ -103,6 +103,31 @@ li a:hover {
       <!-- search form end -->
     
     
+      <div class="col-sm-6 col-md-6">
+            {% if user.is_authenticated %}
+            <ul>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account
+                          <span class="caret"></span>
+                      </a>
+                <ul class="dropdown-menu" role="menu">
+                 
+                  <li>
+                    <a href="/accounts/password/change">Change Password</a>
+                  </li>
+                  <li>
+                    <a href="/logout">Logout</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            {% else %}
+            <li>
+              <a class='btn btn-default' href="/accounts/login">Login</a>
+            </li>
 
+            {% endif %}
+          </div>
+          </ul>
 </body>
 </html>
