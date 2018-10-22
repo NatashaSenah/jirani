@@ -2,17 +2,7 @@
 {% load bootstrap3 %}
 {% block content %}
 {{block.super}}
-<div class="jumbotron">
-    <img src="../../static/images/67.jpg">
-    {{request.user.username}}
-    <div class="col-md-2">
-    
-        <a class="btn" type='button' href="/profile/{{request.user.username}}/">PROFILE</a>
-    </div>
 
-                <a class="btn" type='button' href='/logout'>LOGOUT</a>
-                
-    </div>
 <!DOCTYPE html>
 <html>
 <head>
