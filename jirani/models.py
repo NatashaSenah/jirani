@@ -11,12 +11,12 @@ class Neighbourhood(models.Model):
         self.create()
     def delete_neighbourhood(self):
         self.delete()
-class User(models.model):
+class User(models.Model):
     user_name = models.TextField()
     neighbourhood = models.ForeignKey(Neighbourhood)
     email = models.EmailField()  
     phone_number = models.CharField(max_length = 10,blank =False)
-class Business(models.model):
+class Business(models.Model):
     business_name = models.TextField()
     user = models.ForeignKey(User)
     neighbourhood = models.ForeignKey(Neighbourhood)
