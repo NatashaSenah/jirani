@@ -11,6 +11,10 @@ class Neighbourhood(models.Model):
         self.create()
     def delete_neighbourhood(self):
         self.delete()
+    @classmethod
+    def search_by_title(cls,search_term):
+        neighbourhood = cls.objects.filter(title__icontains=search_term)
+        return neighbourhood
 class User(models.Model):
     user_name = models.TextField()
     neighbourhood = models.ForeignKey(Neighbourhood)
