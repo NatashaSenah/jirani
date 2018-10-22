@@ -5,7 +5,9 @@ from . import views
 
 urlpatterns=[
     url(r'^$',views.jirani,name = 'home'),
-    url(r'^search/', views.search_results, name='search_results')
+    url(r'^search/', views.search_results, name='search_results'),
+    url(r'^new_neighbourhood/$', views.new_neighbourhood, name='new_neighbourhood'),
+    url(r'^business/$', views.business, name='business'),
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
