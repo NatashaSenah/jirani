@@ -86,13 +86,26 @@ WSGI_APPLICATION = 'ujirani.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-if config('MODE')=="dev":
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'jirani',
-            'USER': 'student',
-        'PASSWORD':'Chelsy1234',
+if config('MODE') == "dev":
+   DATABASES = {
+       'default': {
+           'ENGINE': 'django.db.backends.postgresql_psycopg2',
+           'NAME': config(jirani),
+           'USER': config('student'),
+           'PASSWORD': config('Chesly1234'),
+           'HOST': config('DB_HOST'),
+           'PORT': '',
+       }
+
+   }
+# production
+else:
+   DATABASES = {
+       'default': dj_database_url.config(
+           default=config('DATABASE_URL')
+       )
+   }
+        
     
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
